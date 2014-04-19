@@ -10,10 +10,10 @@ Node.js playground to learn!
 
 #Documentation
 
--We can start [here](http://www.nodebeginner.org) !
+- We can start [here](http://www.nodebeginner.org) !
 
 *Please feel free to add as much doc as you think is useful !*
 
 #Running a Node.JS test:
 
--Run node helloworld.js and have a look what's inside !
+- Run node helloworld.js and have a look what's inside !
