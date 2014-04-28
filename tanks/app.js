@@ -3,7 +3,11 @@
  */
 var express = require('express'),
     app = express(),
-    swig = require('swig');
+    server = require('http').createServer(app),
+    swig = require('swig'),
+    io = require('socket.io').listen(server);
+
+server.listen(8888);
 
 function home(req, res) {
     res.render('index');
@@ -13,11 +17,15 @@ app.engine('html', swig.renderFile);
 
 app.set('view engine', 'html');
 app.set('view cache', false);
+app.use(express.static(__dirname + "/public"));
 
 swig.setDefaults({cache: false});
 
-app.use(express.static(__dirname + "/public"));
+io.sockets.on('connection', function (socket) {
+    socket.emit('news', { hello: 'world' });
+    socket.on('msg sent', function (data) {
+        console.log(data);
+    });
+});
 
 app.get('/', home);
-
-app.listen(8888);
