@@ -22,9 +22,8 @@ app.use(express.static(__dirname + "/public"));
 swig.setDefaults({cache: false});
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
     socket.on('msg sent', function (data) {
-        console.log(data);
+        socket.broadcast.emit('msg broadcast', data);
     });
 });
 

@@ -5,23 +5,25 @@
 $.fn.chat = function () {
 
     var socket = io.connect('http://localhost:8888');
+    var chat = this;
 
-    this.append('<input name="msg" type="text" placeholder="Write sth & enter"/>');
-    $('input', this).keypress(function (e) {
+    chat.append('<input name="msg" type="text" placeholder="Write sth & enter"/>');
+
+    chat.keypress(function (e) {
         if (e.keyCode == 13) {
-            input = $(this),
+            input = $('input', chat),
                 msg = input.val();
 
-            input.parent().append('<p>' + msg + '</p>');
+            input.parent().append('<p>You: ' + msg + '</p>');
             input.val('');
-
             socket.emit('msg sent', { msg: msg });
         }
     });
 
-    socket.on('news', function (data) {
-        console.log(data);
+    socket.on('msg broadcast', function(data){
+        chat.append('<p>Others: ' + data.msg + '</p>');
     });
+
 };
 
 $(function () {
