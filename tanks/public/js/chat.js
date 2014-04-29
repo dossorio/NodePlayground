@@ -4,7 +4,7 @@
 
 $.fn.chat = function () {
 
-    var socket = io.connect('http://localhost:8888');
+    var socket = io.connect('http://localhost');
     var chat = this;
 
     chat.append('<input name="msg" type="text" placeholder="Write sth & enter"/>');
@@ -14,7 +14,7 @@ $.fn.chat = function () {
             input = $('input', chat),
                 msg = input.val();
 
-            input.parent().append('<p>You: ' + msg + '</p>');
+            chat.append('<p>You: ' + msg + '</p>');
             input.val('');
             socket.emit('msg sent', { msg: msg });
         }
