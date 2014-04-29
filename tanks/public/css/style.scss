@@ -23,7 +23,7 @@ body {
   @include border-radius;
   float: left;
   min-height: inherit;
-  width: 75%;
+  min-width: 75%;
   background-color: grey;
   border: 1px solid red;
 }

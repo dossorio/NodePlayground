@@ -6,14 +6,16 @@ $.fn.tanks = function () {
 
     /* pg = Canvas Playground */
     var pg = document.createElement('canvas'),
-        pgContext = pg.getContext('2d');
+        pgCxt = pg.getContext('2d');
 
-    $(pg)
-        .height('100%')
-        .width('100%')
-        .appendTo(this);
+    pg.height = this.height();
+    pg.width = this.width();
 
-    pgContext.fillRect(50, 25, 150, 100);
+    $(pg).appendTo(this);
+
+    console.log(this.width() +', ' + this.height());
+
+    pgCxt.fillRect(50, 25, 100, 100);
 
     /* keys 37, 38, 39 and 40 */
     $(window).keypress(function(e){
