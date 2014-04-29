@@ -13,12 +13,10 @@ $.fn.tanks = function () {
 
     $(pg).appendTo(this);
 
-    console.log(this.width() +', ' + this.height());
-
     pgCxt.fillRect(50, 25, 100, 100);
 
     /* keys 37, 38, 39 and 40 */
-    $(window).keypress(function(e){
+    $(document).keydown(function(e){
         switch(e.keyCode){
             case 37:
                 console.log('left');
