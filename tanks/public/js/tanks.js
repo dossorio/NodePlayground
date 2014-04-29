@@ -10,6 +10,7 @@ $.fn.tanks = function () {
 
     pg.height = this.height();
     pg.width = this.width();
+    pg.textContent = 'Please update your browser urgently! :(';
 
     $(pg).appendTo(this);
 
